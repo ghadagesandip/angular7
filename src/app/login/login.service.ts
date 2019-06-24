@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Login } from './login.types';
+import { LoginRequest } from './login.types';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { map, catchError} from 'rxjs/operators';
 import { throwError } from 'rxjs';
+import { environment } from './../../environments/environment';
+import { Router } from '@angular/router';
+
 // https://www.truecodex.com/course/angular-project-training/login-and-logout-using-web-api-with-token-based-authentication-angular
 @Injectable({
   providedIn: 'root'
@@ -13,12 +16,14 @@ export class LoginService {
 
   constructor(
     private http: HttpClient,
+    private router: Router
   ) { }
 
-  public login(userInfo: Login) {
-    return this.http.post<any>('http://localhost:3000/api/users/login', userInfo).pipe(map(user => {
-        if (user && user.token) {
-          localStorage.setItem('currentUser', JSON.stringify(user));
+  public login(userInfo: LoginRequest) {
+    return this.http.post<any>(`${environment.apiUrl}auth/login`, userInfo).pipe(map(response => {
+        if (response && response.data.token) {
+          localStorage.setItem('currentUser', JSON.stringify(response.data.user));
+          localStorage.setItem('token', JSON.stringify(response.data.token));
         }
       }),
       catchError(this.handleError)

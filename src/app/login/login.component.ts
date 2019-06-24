@@ -23,11 +23,14 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    if (this.loginService.isLoggedIn()) {
+      this.router.navigate(['/users']);
+    }
+
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
     });
-    this.loginService.logout();
   }
 
   get email() { return this.loginForm.get('email'); }
@@ -41,15 +44,15 @@ export class LoginComponent implements OnInit {
         password: this.password.value
       }
     ).subscribe((data) => {
-      console.log('data', data)
       if (this.loginService.isLoggedIn()) {
-        alert('login success');
+        this.router.navigate(['/users']);
       } else {
-        alert('Username or password is incorrect.');
+        this.loginError = 'Sorry could set session, please try again';
       }
     },
     err => {
-      console.log('err', err)
+      console.log('err.message', err)
+      this.loginError = err.errorTitle;
       this.error = err;
     });
   }
