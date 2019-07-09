@@ -20,7 +20,8 @@ export class LoginService {
   ) { }
 
   public login(userInfo: LoginRequest) {
-    return this.http.post<any>(`${environment.apiUrl}auth/login`, userInfo).pipe(map(response => {
+    return this.http.post<any>(`${environment.apiUrl}auth/login`, userInfo).pipe(
+      map(response => {
         if (response && response.data.token) {
           localStorage.setItem('currentUser', JSON.stringify(response.data.user));
           localStorage.setItem('token', JSON.stringify(response.data.token));

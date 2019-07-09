@@ -20,11 +20,13 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private loginService: LoginService,
     private router: Router
-  ) {}
+  ) {
+  }
 
   ngOnInit() {
+
     if (this.loginService.isLoggedIn()) {
-      this.router.navigate(['/users']);
+      this.router.navigate(['/admin']);
     }
 
     this.loginForm = this.fb.group({
@@ -45,13 +47,12 @@ export class LoginComponent implements OnInit {
       }
     ).subscribe((data) => {
       if (this.loginService.isLoggedIn()) {
-        this.router.navigate(['/users']);
+        this.router.navigate(['/admin']);
       } else {
         this.loginError = 'Sorry could set session, please try again';
       }
     },
     err => {
-      console.log('err.message', err)
       this.loginError = err.errorTitle;
       this.error = err;
     });
