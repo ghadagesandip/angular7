@@ -12,8 +12,6 @@ export class CategoryService {
 
 
   public getCategories() {
-    let headers = new HttpHeaders();
-    headers = headers.append('authorization', JSON.parse(localStorage.getItem('token')));
-    return this.http.get(`${environment.apiUrl}categories`, {headers});
+    return this.http.get(`${environment.apiUrl}categories`);
   }
 }

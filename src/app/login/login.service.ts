@@ -24,7 +24,7 @@ export class LoginService {
       map(response => {
         if (response && response.data.token) {
           localStorage.setItem('currentUser', JSON.stringify(response.data.user));
-          localStorage.setItem('token', JSON.stringify(response.data.token));
+          localStorage.setItem('token', response.data.token);
         }
       }),
       catchError(this.handleError)
