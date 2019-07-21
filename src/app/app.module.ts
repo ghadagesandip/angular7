@@ -3,23 +3,23 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AdminModule } from './admin/admin.module';
 import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
+import { AdminModule } from './modules/admin/admin.module';
+import { SiteModule } from './modules/site/site.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AdminModule
+    AdminModule,
+    SiteModule
   ],
   providers: [
     {

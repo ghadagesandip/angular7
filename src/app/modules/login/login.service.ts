@@ -3,7 +3,7 @@ import { LoginRequest } from './login.types';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { map, catchError} from 'rxjs/operators';
 import { throwError } from 'rxjs';
-import { environment } from './../../environments/environment';
+import { environment } from './../../../environments/environment';
 import { Router } from '@angular/router';
 
 // https://www.truecodex.com/course/angular-project-training/login-and-logout-using-web-api-with-token-based-authentication-angular

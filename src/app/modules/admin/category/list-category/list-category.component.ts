@@ -19,7 +19,7 @@ export class ListCategoryComponent implements OnInit {
     this.categoryService.getCategories().subscribe(
      (data: any) => {
         this.categories = data.data;
-        console.log('data.data', data.data)
+        console.log('data.data', data.data);
       },
       err => {
         console.log('eer', err);
