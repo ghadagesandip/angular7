@@ -1,0 +1,21 @@
+<mat-card class="example-card">
+  <img 
+      mat-card-image class="prodimg" 
+      src="{{productData.product.images[0]}}" 
+      alt="Photo of a Shiba Inu"
+      onerror="this.src='./assets/default.jpeg'">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{productData._id}}</mat-card-title>
+      <mat-card-subtitle></mat-card-subtitle>
+    </mat-card-header>
+    
+    <mat-card-content class="product-content">
+      <p>
+        {{productData.product.name}}
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <p>Rs {{productData.product.price}}</p>
+    </mat-card-actions>
+  </mat-card>
