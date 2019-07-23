@@ -8,6 +8,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 import { AdminModule } from './modules/admin/admin.module';
 import { SiteModule } from './modules/site/site.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import { SiteModule } from './modules/site/site.module';
     ReactiveFormsModule,
     HttpClientModule,
     AdminModule,
-    SiteModule
+    SiteModule,
+    BrowserAnimationsModule,
   ],
   providers: [
     {

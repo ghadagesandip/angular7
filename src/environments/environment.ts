@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:3001/api/',
+  apiUrl: 'http://sandip-shopping-app.herokuapp.com/api/',
   debugMode: true
 };
 
