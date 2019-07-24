@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HomeService } from './home.service';
+import { SiteService } from './../../site.service';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +9,7 @@ import { HomeService } from './home.service';
 export class HomeComponent implements OnInit {
 
   constructor(
-    private homeService: HomeService
+    private siteService: SiteService
   ) { }
 
     productCategories = [];
@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
   title = 'app';
 
   ngOnInit() {
-    this.homeService.getProductCategories().subscribe(
+    this.siteService.getHomeProducts().subscribe(
       (data: any) => {
         this.productCategories = data.data;
         console.log('data.data', data.data);

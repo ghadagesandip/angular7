@@ -8,6 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ProductComponent implements OnInit {
 
   @Input() productData: any;
+
   constructor() { }
 
   ngOnInit() {

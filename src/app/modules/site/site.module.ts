@@ -6,18 +6,26 @@ import { BannerComponent } from './component/banner/banner.component';
 import { MaterialModule } from './../material/material-module';
 import { ProductComponent } from './component/product/product.component';
 import { CharlimitPipe } from 'src/app/shared/pipes/charlimit.pipe';
+import { ProductListComponent } from './pages/product-list/product-list.component';
+import { LayoutComponent } from './pages/layout/layout.component';
+import { SiteService } from './site.service';
+import { ProductMediuamComponent } from './component/product-mediuam/product-mediuam.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
     BannerComponent,
     ProductComponent,
-    CharlimitPipe
+    CharlimitPipe,
+    ProductListComponent,
+    LayoutComponent,
+    ProductMediuamComponent,
   ],
   imports: [
     CommonModule,
     SiteRoutingModule,
     MaterialModule
-  ]
+  ],
+  providers: [SiteService]
 })
 export class SiteModule { }

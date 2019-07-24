@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-md-2">
+      <mat-radio-group aria-label="Select an option">
+        <b>Filters</b><hr/>
+        <span>Brand</span><br/><br/>
+        <mat-radio-button value="all">All</mat-radio-button><br/>
+        <mat-radio-button value="mi">Mi</mat-radio-button><br/>
+        <mat-radio-button value="oppo">Oppo</mat-radio-button><br/>
+        <mat-radio-button value="apple">Apple</mat-radio-button><br/>
+        <mat-radio-button value="samsung">Samsung</mat-radio-button>
+      </mat-radio-group>
+  </div>
+  <div class="col-md-10">
+    <div class="row">
+      <div class="col-md-12" *ngFor="let productObj of products">
+          <app-product-mediuam [product]="productObj"></app-product-mediuam>
+      </div>
+    </div>
+  </div>
+</div>
