@@ -9,6 +9,7 @@ import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 import { AdminModule } from './modules/admin/admin.module';
 import { SiteModule } from './modules/site/site.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoginModule } from './modules/login/login.module';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     AdminModule,
     SiteModule,
+    LoginModule,
     BrowserAnimationsModule,
   ],
   providers: [
@@ -31,6 +33,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       multi: true
     }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

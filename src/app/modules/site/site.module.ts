@@ -5,12 +5,14 @@ import { HomeComponent } from './pages/home/home.component';
 import { BannerComponent } from './component/banner/banner.component';
 import { MaterialModule } from './../material/material-module';
 import { ProductComponent } from './component/product/product.component';
+import { CharlimitPipe } from 'src/app/shared/pipes/charlimit.pipe';
 
 @NgModule({
   declarations: [
     HomeComponent,
     BannerComponent,
-    ProductComponent
+    ProductComponent,
+    CharlimitPipe
   ],
   imports: [
     CommonModule,
