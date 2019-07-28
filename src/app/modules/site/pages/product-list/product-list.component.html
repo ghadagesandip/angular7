@@ -1,14 +1,10 @@
 <div class="row">
   <div class="col-md-2">
-      <mat-radio-group aria-label="Select an option">
-        <b>Filters</b><hr/>
-        <span>Brand</span><br/><br/>
-        <mat-radio-button value="all">All</mat-radio-button><br/>
-        <mat-radio-button value="mi">Mi</mat-radio-button><br/>
-        <mat-radio-button value="oppo">Oppo</mat-radio-button><br/>
-        <mat-radio-button value="apple">Apple</mat-radio-button><br/>
-        <mat-radio-button value="samsung">Samsung</mat-radio-button>
-      </mat-radio-group>
+      <app-brand-list 
+      [brands] = "brandList"
+      [total] = "allCount"
+      (selectedBrandId) = onProductBrandSelect($event)
+      ></app-brand-list>
   </div>
   <div class="col-md-10">
     <div class="row">

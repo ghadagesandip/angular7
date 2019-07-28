@@ -10,6 +10,7 @@ import { ProductListComponent } from './pages/product-list/product-list.componen
 import { LayoutComponent } from './pages/layout/layout.component';
 import { SiteService } from './site.service';
 import { ProductMediuamComponent } from './component/product-mediuam/product-mediuam.component';
+import { BrandListComponent } from './component/brand-list/brand-list.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ProductMediuamComponent } from './component/product-mediuam/product-med
     ProductListComponent,
     LayoutComponent,
     ProductMediuamComponent,
+    BrandListComponent,
   ],
   imports: [
     CommonModule,

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { SiteService } from '../../site.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -16,11 +16,33 @@ export class ProductListComponent implements OnInit {
   ) { }
 
   public products: any = [];
+  public brandList: any = [];
+  public selectedBrand: string;
+  public allCount = 0 ;
+
+
+  @Output() valueChange = new EventEmitter();
+
   ngOnInit() {
 
-    this.siteSevice.getCategoryWiseProducts(this.route.snapshot.queryParams.id).subscribe(
-      (data: any) => {
-        this.products = data.data;
+    this.siteSevice.getBrandList(this.route.snapshot.queryParams.id).subscribe(
+      (res: any) => {
+        this.allCount = res.data.reduce((total, brand) => {
+          return total + brand.product_count;
+        }, 0);
+        this.brandList = res.data;
+        console.log('this.allCount ', this.allCount);
+      }
+    );
+
+    this.loadProducts();
+  }
+
+  loadProducts() {
+
+    this.siteSevice.getCategoryWiseProducts(this.route.snapshot.queryParams.id, this.selectedBrand).subscribe(
+      (res: any) => {
+        this.products = res.data;
         console.log('data', this.products);
       },
       err => {
@@ -28,5 +50,12 @@ export class ProductListComponent implements OnInit {
       }
     );
   }
+
+  onProductBrandSelect(val) {
+    this.selectedBrand = val;
+    console.log('value to para', val);
+    this.loadProducts();
+  }
+
 
 }

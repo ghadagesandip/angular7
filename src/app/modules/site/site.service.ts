@@ -13,9 +13,13 @@ export class SiteService {
     return this.http.get(`${environment.apiUrl}categories/dashboard-products`);
   }
 
+  public getBrandList(categoryId: string) {
+    return this.http.get(`${environment.apiUrl}categories/${categoryId}/brand-count`);
+  }
 
-  public getCategoryWiseProducts(id: string) {
-     return this.http.get(`${environment.apiUrl}products/byCategoryId/${id}?limit=10`);
+  public getCategoryWiseProducts(id: string, brand: string) {
+    brand = brand ? brand : '';
+    return this.http.get(`${environment.apiUrl}products/byCategoryId/${id}?limit=10&brand=${brand}`);
   }
 
 }
