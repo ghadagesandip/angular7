@@ -1,16 +1,16 @@
   <div class="container main">
     <app-banner></app-banner>
-    <div class="container-fluid margin-top-20" *ngFor="let category of productCategories" >
-        <div class="row">
+    <div class="container-fluid" *ngFor="let category of productCategories" >
+        <div class="row  margintop40">
           <div class="col-md-10">
               <h3>{{category.name}}</h3>
           </div>
           <div class="col-md-2 text-right">
-              <button class="btn btn-primary"> Show All</button>
+              <a routerLink="./{{category.slug}}" [queryParams] ="{id:category._id}" class="btn btn-primary"> Show All</a>
           </div>
         </div>
         <div class="row">
-            <div class="col-md-3 margin-top-10"  *ngFor="let product of category.brands">
+            <div class="col-md-3 margintop40"  *ngFor="let product of category.brands">
                 <app-product [productData]="product"></app-product>
             </div>
         </div>

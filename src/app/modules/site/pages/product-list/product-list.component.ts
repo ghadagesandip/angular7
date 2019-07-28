@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SiteService } from '../../site.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-product-list',
@@ -9,13 +10,15 @@ import { SiteService } from '../../site.service';
 export class ProductListComponent implements OnInit {
 
   constructor(
-    private siteSevice: SiteService
+    private siteSevice: SiteService,
+    private route: ActivatedRoute,
+
   ) { }
 
   public products: any = [];
   ngOnInit() {
 
-    this.siteSevice.getCategoryWiseProducts('5d224669ca5bec29abdf23ed').subscribe(
+    this.siteSevice.getCategoryWiseProducts(this.route.snapshot.queryParams.id).subscribe(
       (data: any) => {
         this.products = data.data;
         console.log('data', this.products);

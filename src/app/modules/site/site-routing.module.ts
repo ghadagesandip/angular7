@@ -14,7 +14,7 @@ const routes: Routes = [
         component: HomeComponent,
       },
       {
-        path: 'mobiles',
+        path: ':category-slug',
         component: ProductListComponent,
       }
     ]

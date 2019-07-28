@@ -15,9 +15,7 @@ export class SiteService {
 
 
   public getCategoryWiseProducts(id: string) {
-     return this.http.get(`${environment.apiUrl}products/byCategoryId/${id}?limit=100`);
-     // above can be written as below
-    // return this.http.get(environment.apiUrl + 'products/' + id + '/details');
+     return this.http.get(`${environment.apiUrl}products/byCategoryId/${id}?limit=10`);
   }
 
 }
