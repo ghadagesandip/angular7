@@ -21,8 +21,6 @@ export class ProductListComponent implements OnInit {
   public allCount = 0 ;
 
 
-  @Output() valueChange = new EventEmitter();
-
   ngOnInit() {
 
     this.siteSevice.getBrandList(this.route.snapshot.queryParams.id).subscribe(

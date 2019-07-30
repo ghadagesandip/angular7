@@ -14,7 +14,7 @@ const routes: Routes = [
         component: HomeComponent,
       },
       {
-        path: ':category-slug',
+        path: 'category/:category-slug',
         component: ProductListComponent,
       }
     ]

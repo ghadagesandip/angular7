@@ -11,6 +11,8 @@ import { LayoutComponent } from './pages/layout/layout.component';
 import { SiteService } from './site.service';
 import { ProductMediuamComponent } from './component/product-mediuam/product-mediuam.component';
 import { BrandListComponent } from './component/brand-list/brand-list.component';
+import { MAT_DIALOG_DEFAULT_OPTIONS} from '@angular/material/dialog';
+import { LoginDialogComponent } from './component/login-dialog/login-dialog.component';
 
 @NgModule({
   declarations: [
@@ -22,12 +24,19 @@ import { BrandListComponent } from './component/brand-list/brand-list.component'
     LayoutComponent,
     ProductMediuamComponent,
     BrandListComponent,
+    LoginDialogComponent
   ],
   imports: [
     CommonModule,
     SiteRoutingModule,
-    MaterialModule
+    MaterialModule,
   ],
-  providers: [SiteService]
+  providers: [
+    SiteService,
+    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
+  ],
+  entryComponents: [
+    LoginDialogComponent
+  ],
 })
 export class SiteModule { }

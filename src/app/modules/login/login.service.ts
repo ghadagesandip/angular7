@@ -31,6 +31,18 @@ export class LoginService {
     );
   }
 
+  public register(userInfo: LoginRequest) {
+    return this.http.post<any>(`${environment.apiUrl}auth/signup`, userInfo).pipe(
+      map(response => {
+        if (response && response.data.token) {
+          localStorage.setItem('currentUser', JSON.stringify(response.data.user));
+          localStorage.setItem('token', response.data.token);
+        }
+      }),
+      catchError(this.handleError)
+    );
+  }
+
   public isLoggedIn() {
     if (localStorage.getItem('currentUser')) {
       return true;
