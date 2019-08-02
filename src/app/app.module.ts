@@ -9,7 +9,6 @@ import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 import { AdminModule } from './modules/admin/admin.module';
 import { SiteModule } from './modules/site/site.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LoginModule } from './modules/login/login.module';
 
 
 @NgModule({
@@ -23,7 +22,6 @@ import { LoginModule } from './modules/login/login.module';
     HttpClientModule,
     AdminModule,
     SiteModule,
-    LoginModule,
     BrowserAnimationsModule,
   ],
   providers: [

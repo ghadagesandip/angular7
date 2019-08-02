@@ -13,8 +13,7 @@ export interface LoginData {
 })
 export class LayoutComponent implements OnInit {
 
-  email: string;
-  password: string;
+  respnse: any;
 
   constructor(
     public dialog: MatDialog
@@ -22,13 +21,13 @@ export class LayoutComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(LoginDialogComponent, {
-      width: '250px',
-      data: {email: this.email, password: this.password}
+      width: '500px',
+      data: {},
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      this.password = result;
+      this.respnse = result;
     });
   }
 

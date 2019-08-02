@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from './../../../environments/environment';
+import { LoginForm } from './component/login-dialog/login';
 
 @Injectable()
 export class SiteService {
@@ -22,4 +23,7 @@ export class SiteService {
     return this.http.get(`${environment.apiUrl}products/byCategoryId/${id}?limit=10&brand=${brand}`);
   }
 
+  public login(loginData: LoginForm) {
+    return this.http.post<LoginForm>(`${environment.apiUrl}auth/login`, loginData);
+  }
 }

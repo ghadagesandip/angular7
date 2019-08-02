@@ -1,3 +1,5 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
 .main{
     margin-top: 80px;
 }
@@ -8,4 +10,8 @@
 }
 .margin {
     margin-top: 80px;
+}
+.backdropBackground{
+    background: red;
+    opacity: 0.5;
 }

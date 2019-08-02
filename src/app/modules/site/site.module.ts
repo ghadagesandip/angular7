@@ -13,6 +13,7 @@ import { ProductMediuamComponent } from './component/product-mediuam/product-med
 import { BrandListComponent } from './component/brand-list/brand-list.component';
 import { MAT_DIALOG_DEFAULT_OPTIONS} from '@angular/material/dialog';
 import { LoginDialogComponent } from './component/login-dialog/login-dialog.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -30,10 +31,14 @@ import { LoginDialogComponent } from './component/login-dialog/login-dialog.comp
     CommonModule,
     SiteRoutingModule,
     MaterialModule,
+    FormsModule
+
   ],
   providers: [
     SiteService,
-    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
+    {
+      provide: MAT_DIALOG_DEFAULT_OPTIONS,
+      useValue: {hasBackdrop: true}}
   ],
   entryComponents: [
     LoginDialogComponent
