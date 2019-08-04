@@ -14,6 +14,8 @@ import { BrandListComponent } from './component/brand-list/brand-list.component'
 import { MAT_DIALOG_DEFAULT_OPTIONS} from '@angular/material/dialog';
 import { LoginDialogComponent } from './component/login-dialog/login-dialog.component';
 import { FormsModule } from '@angular/forms';
+import { CartComponent } from './pages/cart/cart.component';
+import { CartItemComponent } from './component/cart-item/cart-item.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { FormsModule } from '@angular/forms';
     LayoutComponent,
     ProductMediuamComponent,
     BrandListComponent,
-    LoginDialogComponent
+    LoginDialogComponent,
+    CartComponent,
+    CartItemComponent
   ],
   imports: [
     CommonModule,

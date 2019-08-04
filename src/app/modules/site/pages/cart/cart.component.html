@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-md-9">
+      <div class="row">
+        <div class="col-md-3">
+          My Cart
+        </div>
+        <div class="col-md-9">
+          Address
+        </div>
+    </div>
+    <hr/>
+      <app-cart-item 
+      *ngFor="let cartItem of cartItems"
+      [cartItem]="cartItem">
+    </app-cart-item>
+  </div>
+  <div class="col-md-3">
+    Price Details:
+    <hr/>
+  </div>
+</div>

@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginDialogComponent } from '../../component/login-dialog/login-dialog.component';
+import { SiteService } from '../../site.service';
 
 export interface LoginData {
   email: string;
@@ -14,9 +15,11 @@ export interface LoginData {
 export class LayoutComponent implements OnInit {
 
   respnse: any;
+  public user: any;
 
   constructor(
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    public siteService: SiteService
   ) { }
 
   openDialog(): void {
@@ -32,9 +35,17 @@ export class LayoutComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (localStorage.getItem('user')) {
+      this.user = JSON.parse(localStorage.getItem('user'));
+      console.log('get loogedin user', this.user);
+    }
+
   }
 
-  openLoginDialog(): void {
+  logOut(): void {
+    this.siteService.logout();
+    window.location.reload();
   }
+
 
 }

@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-md-3">
+    <img width="100" height="120" [src]="cartItem.product_id.images[0]" />
+  </div>
+  <div class="col-md-6">
+    {{cartItem.product_id.name | charLimit:50}}<br/>
+    Rs.{{cartItem.product_id.price - cartItem.product_id.price *cartItem.product_id.discount/100}}  <s> Rs.{{cartItem.product_id.price}}</s><br/>
+    <button class="mat-raised-button"  (click)="descreseQty()" mat-mini-fab> - </button>
+    &nbsp;
+    <input class="col-sm-2" type="text" [(ngModel)]="cartItem.quantity">
+    &nbsp;
+    <button class="mat-raised-button" (click)="increaseQty()" mat-mini-fab>+</button> 
+    &nbsp;&nbsp;&nbsp;&nbsp;<button class="mat-raised-button" mat-button>Remove</button>
+  </div>
+  <div class="col-md-3">
+    Will be delivered soon days
+    </div>
+</div>
+<hr/>

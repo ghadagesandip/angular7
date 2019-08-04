@@ -26,4 +26,19 @@ export class SiteService {
   public login(loginData: LoginForm) {
     return this.http.post<LoginForm>(`${environment.apiUrl}auth/login`, loginData);
   }
+
+  public setUser(data) {
+    console.log('JSON.stringify(data.user)', JSON.stringify(data.user));
+    localStorage.setItem('user', JSON.stringify(data.user));
+    localStorage.setItem('token', data.token);
+  }
+
+  public logout() {
+    localStorage.removeItem('user');
+    localStorage.removeItem('token');
+  }
+
+  public getCartItems() {
+    return this.http.get(`${environment.apiUrl}carts`);
+  }
 }
