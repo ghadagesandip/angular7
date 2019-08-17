@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { AdminRoutingModule } from './admin-routing.module';
 import { CustomerComponent } from './pages/customer/customer.component';
 import { AdminDashboardComponent } from './dashboard/dashboard.component';
-import { ListCategoryComponent } from './pages/category/list-category/list-category.component';
 import { CategoryService} from './shared/category.service';
 import { AdminService } from './admin.service';
 import { MaterialModule } from '../material/material-module';
@@ -13,7 +12,6 @@ import { MaterialModule } from '../material/material-module';
   declarations: [
     AdminDashboardComponent,
     CustomerComponent,
-    ListCategoryComponent
   ],
   imports: [
     CommonModule,

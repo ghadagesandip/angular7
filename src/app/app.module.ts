@@ -9,6 +9,7 @@ import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 import { AdminModule } from './modules/admin/admin.module';
 import { SiteModule } from './modules/site/site.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AuthService } from './shared/service/auth.service';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
-    }
+    },
+    AuthService
   ],
   bootstrap: [AppComponent],
 })
