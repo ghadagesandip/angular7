@@ -28,8 +28,8 @@ export class SiteService {
   }
 
   public setUser(data) {
-    console.log('JSON.stringify(data.user)', JSON.stringify(data.user));
     localStorage.setItem('user', JSON.stringify(data.user));
+    localStorage.setItem('first_name', data.user.first_name);
     localStorage.setItem('token', data.token);
   }
 

@@ -2,10 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { AdminRoutingModule } from './admin-routing.module';
-import { CustomerComponent } from './customer/customer.component';
+import { CustomerComponent } from './pages/customer/customer.component';
 import { AdminDashboardComponent } from './dashboard/dashboard.component';
-import { ListCategoryComponent } from './category/list-category/list-category.component';
+import { ListCategoryComponent } from './pages/category/list-category/list-category.component';
 import { CategoryService} from './shared/category.service';
+import { AdminService } from './admin.service';
+import { MaterialModule } from '../material/material-module';
 
 @NgModule({
   declarations: [
@@ -15,8 +17,12 @@ import { CategoryService} from './shared/category.service';
   ],
   imports: [
     CommonModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    MaterialModule
   ],
-  providers: [CategoryService],
+  providers: [
+    CategoryService,
+    AdminService
+  ],
 })
 export class AdminModule { }

@@ -29,7 +29,8 @@ export class LoginDialogComponent {
           console.log('login done', resp);
           this.siteService.setUser(resp.data);
           if (resp && resp.data && resp.data.user.userRole === 'admin') {
-            this.router.navigate(['/admin/customer']);
+            this.onClose();
+            return this.router.navigate(['/admin/customer']);
           }
           this.onClose();
           window.location.reload();

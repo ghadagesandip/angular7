@@ -1,0 +1,26 @@
+<h3>
+  Customer list
+</h3>
+<table class="table table-bordered">
+  <thead>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Gender</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let customer of customers">
+      <td>{{customer.first_name}}</td>
+      <td>{{customer.email}}</td>
+      <td>{{customer.gender}}</td>
+    </tr>
+  </tbody>
+</table>
+<div>
+  <mat-paginator 
+    [length]="length"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="pageSizeOptions"
+    (page)="loadCustomers()"
+    [pageIndex]="pageIndex">
+  </mat-paginator>
+</div>
