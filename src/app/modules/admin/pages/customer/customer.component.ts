@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
-import { AdminService } from '../../admin.service';
+import { AdminService } from '../../shared/admin.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { tap } from 'rxjs/operators';
 
@@ -44,4 +44,6 @@ export class CustomerComponent implements OnInit, AfterViewInit {
       },
     );
   }
+
+
 }

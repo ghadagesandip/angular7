@@ -37,7 +37,6 @@ export class LayoutComponent implements OnInit {
   ngOnInit() {
     if (localStorage.getItem('user')) {
       this.user = JSON.parse(localStorage.getItem('user'));
-      console.log('get loogedin user', this.user);
     }
 
   }

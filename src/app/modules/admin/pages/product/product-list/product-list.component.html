@@ -1,0 +1,58 @@
+<div class="row">
+  <div class="col-md-3">
+    <h3> Products list</h3>
+  </div>
+  <div class="col-md-7">
+      <mat-form-field>
+        <mat-label>Select Category</mat-label>
+        <mat-select (selectionChange)="setCategory($event)">
+          <mat-option *ngFor="let category of categories" [value]="category._id" >
+            {{category.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+          <mat-label>Select Brand</mat-label>
+          <mat-select (selectionChange)="setBrand($event)">
+            <mat-option *ngFor="let brand of brands" [value]="brand._id" >
+              {{brand.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+  </div>
+  <div class="col-md-2 text-right">
+      <a routerLink="/admin/add-product" mat-raised-button	color="primary" mat-button>Add</a>
+  </div>
+</div>
+<table class="table table-bordered">
+  <thead>
+      <th>Name</th>
+      <th>Brand</th>
+      <th>Price</th>
+      <th>Discount</th>
+      <th>Options</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of products">
+      <td>{{product.name}}</td>
+      <td>{{product.brand.name}}</td>
+      <td>{{product.price}}</td>
+      <td>{{product.discount}}</td>
+      <td>
+          <mat-icon color="warn" aria-hidden="false" (click)="openDialog(product._id)" aria-label="Delete Product">delete</mat-icon>
+          <a [routerLink]="['/edit', product.id]">
+            <mat-icon  color="secondary" aria-hidden="false" aria-label="Edit Product">edit</mat-icon>
+          </a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div>
+  <mat-paginator 
+    [length]="length"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="pageSizeOptions"
+    (page)="loadProducts()"
+    [pageIndex]="pageIndex">
+  </mat-paginator>
+</div>

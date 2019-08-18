@@ -18,4 +18,20 @@ export class AdminService {
     public getCustomers(page) {
         return this.http.get(`${environment.apiUrl}users?page=${page + 1}`);
     }
+
+    public getProducts(page, category, brand) {
+        return this.http.get(`${environment.apiUrl}products?page=${page + 1}&category=${category}&brand=${brand}`);
+    }
+
+    public getCateogies() {
+        return this.http.get(`${environment.apiUrl}categories`);
+    }
+
+    public getBrands() {
+        return this.http.get(`${environment.apiUrl}brands`);
+    }
+
+    public deleteRecord(id, path) {
+        return this.http.delete(`${environment.apiUrl}${path}/${id}`);
+    }
 }

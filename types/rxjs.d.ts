@@ -259,7 +259,6 @@ export namespace animationFrameScheduler {
     constructor(action: any);
     active: any;
     scheduled: any;
-    active: any;
   }
   function now(): any;
   function schedule(work: any, delay: any, state: any): any;
@@ -292,7 +291,6 @@ export namespace asapScheduler {
     constructor(action: any);
     active: any;
     scheduled: any;
-    active: any;
   }
   function now(): any;
   function schedule(work: any, delay: any, state: any): any;
@@ -323,7 +321,6 @@ export namespace asyncScheduler {
   const active: boolean;
   class flush {
     constructor(action: any);
-    active: any;
     active: any;
   }
   function now(): any;
@@ -383,7 +380,6 @@ export namespace queueScheduler {
   const active: boolean;
   class flush {
     constructor(action: any);
-    active: any;
     active: any;
   }
   function now(): any;

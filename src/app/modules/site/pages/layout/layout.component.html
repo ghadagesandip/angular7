@@ -11,12 +11,19 @@
           <a *ngIf="!user" class="nav-link" 
           (click)="openDialog()">Login & Signup
          </a>
-         <a *ngIf="user" class="nav-link" 
-         (click)="logOut()">hi {{user.first_name}}
-        </a>
+        <button *ngIf="user"  mat-button class="nav-link"  [matMenuTriggerFor]="menu">hi {{user.first_name}}</button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>
+              <i class="material-icons md-24">face</i> Profile</button>
+          <button mat-menu-item><a (click)="logOut()">
+              <i class="material-icons md-24">power_settings_new</i> Logout </a>
+          </button>
+        </mat-menu>
         </li>
         <li *ngIf="user" class="nav-item active">
-          <a class="nav-link" [routerLink]="['cart']">Cart </a>
+          <a class="nav-link" [routerLink]="['cart']">
+            <i class="material-icons md-24">shopping_cart</i>
+          </a>
         </li>
        
       </ul>
