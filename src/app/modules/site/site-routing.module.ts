@@ -4,6 +4,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { ProductListComponent } from './pages/product-list/product-list.component';
 import { LayoutComponent } from './pages/layout/layout.component';
 import { CartComponent } from './pages/cart/cart.component';
+import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
 
 const routes: Routes = [
   {
@@ -21,7 +22,11 @@ const routes: Routes = [
       {
         path: 'category/:category-slug',
         component: ProductListComponent,
-      }
+      },
+      {
+        path: 'product-slug/:id',
+        component: ProductDetailComponent,
+      },
     ]
   },
 ];

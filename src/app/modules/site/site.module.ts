@@ -16,6 +16,7 @@ import { LoginDialogComponent } from './component/login-dialog/login-dialog.comp
 import { FormsModule } from '@angular/forms';
 import { CartComponent } from './pages/cart/cart.component';
 import { CartItemComponent } from './component/cart-item/cart-item.component';
+import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { CartItemComponent } from './component/cart-item/cart-item.component';
     BrandListComponent,
     LoginDialogComponent,
     CartComponent,
-    CartItemComponent
+    CartItemComponent,
+    ProductDetailComponent
   ],
   imports: [
     CommonModule,

@@ -23,12 +23,16 @@ export class AdminService {
         return this.http.get(`${environment.apiUrl}products?page=${page + 1}&category=${category}&brand=${brand}`);
     }
 
+    public addProduct(product: any) {
+        return this.http.post(`${environment.apiUrl}products`, product);
+    }
+
     public getCateogies() {
         return this.http.get(`${environment.apiUrl}categories`);
     }
 
-    public getBrands() {
-        return this.http.get(`${environment.apiUrl}brands`);
+    public getBrands(categoryId) {
+        return this.http.get(`${environment.apiUrl}brands?category_id=${categoryId}`);
     }
 
     public deleteRecord(id, path) {

@@ -43,7 +43,6 @@ export class ProductListComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.loadProducts();
     this.loadCategories();
-    this.loadBrands();
   }
 
   loadProducts() {
@@ -68,8 +67,8 @@ export class ProductListComponent implements OnInit, AfterViewInit {
     );
   }
 
-  loadBrands(): void {
-    this.adminService.getBrands().subscribe(
+  loadBrands(categoryId): void {
+    this.adminService.getBrands(categoryId).subscribe(
       (resp: any) => {
         this.brands = resp.data;
       }
@@ -98,7 +97,6 @@ export class ProductListComponent implements OnInit, AfterViewInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed', result);
-
     });
   }
 }

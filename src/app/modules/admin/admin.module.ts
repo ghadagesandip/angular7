@@ -10,6 +10,7 @@ import { ProductListComponent } from './pages/product/product-list/product-list.
 import { AddProductComponent } from './pages/product/add-product/add-product.component';
 import { EditProductComponent } from './pages/product/edit-product/edit-product.component';
 import { ConfirmDeleteComponent } from './components/confirm-delete/confirm-delete.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ConfirmDeleteComponent } from './components/confirm-delete/confirm-dele
   imports: [
     CommonModule,
     AdminRoutingModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule
   ],
   providers: [
     AdminService

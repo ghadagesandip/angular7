@@ -1,3 +1,106 @@
-<p>
-  add-product works!
-</p>
+<form [formGroup]="addProduct" (ngSubmit)="onSubmit()">
+  <mat-card class="example-container">
+    <mat-card-title>
+      Add product
+    </mat-card-title>
+    <mat-card-content>
+      <mat-form-field>
+        <input matInput type="text" placeholder="Name" formControlName="name">
+      </mat-form-field>
+  
+      <h4>Images</h4> 
+      <b (click)="addOneMoreImg()">Add one more</b>
+      <mat-form-field formArrayName="images" 
+         *ngFor="let image of images.controls; let i=index">
+        <input
+          matInput 
+          type="text" 
+          [formControlName]="i">
+      </mat-form-field>
+
+      <mat-form-field>
+        <textarea matInput rows="3" placeholder="Product description"></textarea>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="number" placeholder="price" formControlName="price">
+      </mat-form-field>
+  
+      <mat-form-field>
+        <input matInput type="number" placeholder="discount" formControlName="discount">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-select (selectionChange)="loadBrands($event.value)" formControlName="category_id" placeholder="Choose Category">
+            <mat-option *ngFor="let category of categories" [value]="category._id"  >
+              {{category.name}}
+            </mat-option>
+          </mat-select>
+      </mat-form-field>
+      
+      <mat-form-field>
+        <mat-select formControlName="brand" placeholder="Choose Brand">
+            <mat-option *ngFor="let brand of brands" [value]="brand._id"  >
+              {{brand.name}}
+            </mat-option>
+          </mat-select>
+      </mat-form-field>
+      
+      <mat-form-field>
+        <input matInput type="number" placeholder="warrenty" formControlName="warrenty">
+      </mat-form-field>
+
+      <h3>highlights</h3> <b (click)="addOneMore()">Add one more</b>
+      <mat-form-field formArrayName="highlights" 
+         *ngFor="let highlight of highlights.controls; let i=index">
+        <input
+          matInput 
+          type="text" 
+          [formControlName]="i">
+      </mat-form-field>
+
+      <div formGroupName="general">
+        <mat-form-field>
+          <input matInput type="text" placeholder="model name" formControlName="model_name">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput type="text" placeholder="model number" formControlName="model_number">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput type="text" placeholder="color" formControlName="color">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput type="text" placeholder="in the box" formControlName="in_the_box">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput type="text" placeholder="sim type" formControlName="sim_type">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput type="text" placeholder="touch Screen" formControlName="touchScreen">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput type="text" placeholder="quick charging" formControlName="quick_charging">
+        </mat-form-field>
+
+      </div>
+    </mat-card-content>
+
+    <mat-card-actions>
+        <button type="submit" 
+          [disabled]="!addProduct.valid"
+          mat-raised-button 
+          color="primary" 
+          mat-button>Submit</button>
+        <button mat-button>Cancel</button>
+    </mat-card-actions>
+
+   
+
+  </mat-card>
+</form>
+
