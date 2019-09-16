@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, Validators, FormArray } from '@angular/forms';
+import { FormBuilder, Validators, FormArray } from '@angular/forms';
 import { AdminService } from '../../../shared/admin.service';
 import { Router } from '@angular/router';
 
@@ -63,11 +63,15 @@ export class AddProductComponent implements OnInit {
   onSubmit() {
     // TODO: Use EventEmitter with form value
     console.warn(this.addProduct.value);
-    this.adminService.addProduct(this.addProduct.value).subscribe(
-      (resp: any) => {
-        this.router.navigate(['/admin/products']);
-      }
-    );
+    if (this.addProduct.valid) {
+      this.adminService.addProduct(this.addProduct.value).subscribe(
+        (resp: any) => {
+          this.router.navigate(['/admin/products']);
+        }
+      );
+    } else {
+      return false;
+    }
   }
 
   ngOnInit() {

@@ -92,15 +92,11 @@
 
     <mat-card-actions>
         <button type="submit" 
-          [disabled]="!addProduct.valid"
           mat-raised-button 
           color="primary" 
           mat-button>Submit</button>
-        <button mat-button>Cancel</button>
+        <a routerLink="/admin/products"  mat-button>Cancel</a>
     </mat-card-actions>
-
-   
-
   </mat-card>
 </form>
 

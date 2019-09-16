@@ -5,6 +5,7 @@ import { AdminDashboardComponent } from './dashboard/dashboard.component';
 import { AdminGuard } from 'src/app/shared/guards/admin.guard';
 import { ProductListComponent } from './pages/product/product-list/product-list.component';
 import { AddProductComponent } from './pages/product/add-product/add-product.component';
+import { EditProductComponent } from './pages/product/edit-product/edit-product.component';
 
 const routes: Routes = [
   {
@@ -28,6 +29,10 @@ const routes: Routes = [
       {
         path: 'add-product',
         component: AddProductComponent,
+      },
+      {
+        path: 'product/:id',
+        component: EditProductComponent,
       }
     ]
   },

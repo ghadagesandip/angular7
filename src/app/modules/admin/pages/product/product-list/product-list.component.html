@@ -39,8 +39,9 @@
       <td>{{product.price}}</td>
       <td>{{product.discount}}</td>
       <td>
-          <mat-icon color="warn" aria-hidden="false" (click)="openDialog(product._id)" aria-label="Delete Product">delete</mat-icon>
-          <a [routerLink]="['/edit', product.id]">
+          <mat-icon color="warn" class="pointer" aria-hidden="false" (click)="openDialog(product._id)" aria-label="Delete Product">delete</mat-icon>
+          &nbsp;
+          <a [routerLink]="['/product', product._id]">
             <mat-icon  color="secondary" aria-hidden="false" aria-label="Edit Product">edit</mat-icon>
           </a>
       </td>

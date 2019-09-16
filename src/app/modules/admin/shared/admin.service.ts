@@ -23,8 +23,16 @@ export class AdminService {
         return this.http.get(`${environment.apiUrl}products?page=${page + 1}&category=${category}&brand=${brand}`);
     }
 
+    public getProduct(id: string) {
+        return this.http.get(`${environment.apiUrl}products/${id}/details`);
+    }
+
     public addProduct(product: any) {
         return this.http.post(`${environment.apiUrl}products`, product);
+    }
+
+    public editProduct(id, data) {
+
     }
 
     public getCateogies() {
