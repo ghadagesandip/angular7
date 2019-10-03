@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   // apiUrl: 'http://sandip-shopping-app.herokuapp.com/api/',
-   apiUrl: 'http://localhost:3030/api/',
+  // apiUrl: 'http://localhost:3030/api/',
+  apiUrl : 'http://enigmatic-reef-16960.herokuapp.com/api/',
   debugMode: true
 };
 
