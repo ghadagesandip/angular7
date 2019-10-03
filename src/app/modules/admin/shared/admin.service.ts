@@ -15,8 +15,8 @@ export class AdminService {
         localStorage.removeItem('first_name');
     }
 
-    public getCustomers(page) {
-        return this.http.get(`${environment.apiUrl}users?page=${page + 1}`);
+    public getCustomers(page, limit) {
+        return this.http.get(`${environment.apiUrl}users?page=${page + 1}&limit=${limit}`);
     }
 
     public getProducts(page, category, brand) {

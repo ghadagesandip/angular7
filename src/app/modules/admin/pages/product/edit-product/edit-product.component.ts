@@ -60,7 +60,6 @@ export class EditProductComponent implements OnInit {
             this.brands = categories.data;
           }
         );
-        console.log('resp.data.brand');
         this.editProduct.patchValue({
           name: resp.data.name,
           images: resp.data.images,

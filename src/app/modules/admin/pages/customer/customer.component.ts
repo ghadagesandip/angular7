@@ -13,7 +13,7 @@ export class CustomerComponent implements OnInit, AfterViewInit {
   constructor( private adminService: AdminService) { }
 
   customers: [];
-  pageSize = 5;
+  pageSize = 10;
   pageSizeOptions: [5, 10, 25, 100];
   pageIndex = 0;
   length = 10;
@@ -36,7 +36,8 @@ export class CustomerComponent implements OnInit, AfterViewInit {
 
   loadCustomers() {
     const page = this.paginator && this.paginator.pageIndex ? this.paginator.pageIndex : 0;
-    this.adminService.getCustomers(page).subscribe(
+    const limit = this.paginator && this.paginator.pageSize ? this.paginator.pageSize : 10;
+    this.adminService.getCustomers(page, limit).subscribe(
       (resp: any) => {
         this.customers = resp.data;
         this.length = resp.pagination.total;

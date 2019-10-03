@@ -26,7 +26,6 @@ export class LoginDialogComponent {
       this.submitted = true;
       this.siteService.login(this.login).subscribe(
         (resp: any) => {
-          console.log('login done', resp);
           this.siteService.setUser(resp.data);
           if (resp && resp.data && resp.data.user.userRole === 'admin') {
             this.onClose();
