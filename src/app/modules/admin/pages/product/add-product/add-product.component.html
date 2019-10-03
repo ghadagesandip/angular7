@@ -17,14 +17,18 @@
       
 
       <h4>Images</h4> 
-      {{addProduct.controls['images']}}
       <mat-form-field appearance="outline"  formArrayName="images" 
           *ngFor="let image of images.controls; let i=index">
           <mat-label>Image Url {{i+1}}</mat-label>
         <input
           matInput 
           type="text"
-          [formControlName]="i">
+          [formControlName]="i">    
+          <mat-error *ngIf="addProduct.controls['images']?.invalid
+          && (addProduct.controls['images'].dirty || addProduct.controls['images'].touched) 
+          && addProduct.controls['images'].errors?.required">
+           Image is required.
+          </mat-error>   
           <mat-icon *ngIf="i == 0" (click)="addOneMoreImg()" matSuffix>add</mat-icon>
           <mat-icon *ngIf="i > 0" matSuffix (click)="removeImg(i)">delete</mat-icon>
       </mat-form-field>
@@ -32,23 +36,43 @@
       
       <mat-form-field appearance="outline">
           <mat-label> Product description </mat-label>
-        <textarea matInput rows="3"></textarea>
+        <textarea matInput rows="3" formControlName="productDesc"></textarea>
+        <mat-error *ngIf="addProduct.controls['productDesc'].invalid
+        && (addProduct.controls['productDesc'].dirty || addProduct.controls['productDesc'].touched) 
+        && addProduct.controls['productDesc'].errors.required">
+         Product Description is required.
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="col-md-4">
           <mat-label> Price </mat-label>
           <input matInput type="number" formControlName="price">
+          <mat-error *ngIf="addProduct.controls['price'].invalid
+        && (addProduct.controls['price'].dirty || addProduct.controls['price'].touched) 
+        && addProduct.controls['price'].errors.required">
+         Price is required.
+        </mat-error>
       </mat-form-field>
   
       <mat-form-field appearance="outline" class="col-md-4">
           <mat-label> Discount </mat-label>
         <input matInput type="number" formControlName="discount">
+        <mat-error *ngIf="addProduct.controls['discount'].invalid
+        && (addProduct.controls['discount'].dirty || addProduct.controls['discount'].touched) 
+        && addProduct.controls['discount'].errors.required">
+         Discount is required.
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="col-md-4">
           <mat-label> Warrenty </mat-label>
           <input matInput type="number" formControlName="warrenty">
-        </mat-form-field>
+          <mat-error *ngIf="addProduct.controls['warrenty'].invalid
+          && (addProduct.controls['warrenty'].dirty || addProduct.controls['warrenty'].touched) 
+          && addProduct.controls['warrenty'].errors.required">
+           Warranty is required.
+          </mat-error>
+      </mat-form-field>
   
 
       <mat-form-field appearance="outline" class="col-md-6">
@@ -57,6 +81,11 @@
               {{category.name}}
             </mat-option>
           </mat-select>
+          <mat-error *ngIf="addProduct.controls['category_id'].invalid
+          && (addProduct.controls['category_id'].dirty || addProduct.controls['category_id'].touched) 
+          && addProduct.controls['category_id'].errors?.required">
+          Category is required.
+          </mat-error>
       </mat-form-field>
       
       <mat-form-field appearance="outline" class="col-md-6">
@@ -65,6 +94,11 @@
               {{brand.name}}
             </mat-option>
           </mat-select>
+          <mat-error *ngIf="addProduct.controls['brand'].invalid
+          && (addProduct.controls['brand'].dirty || addProduct.controls['brand'].touched) 
+          && addProduct.controls['category_id'].errors?.required">
+          Brand is required.
+          </mat-error>
       </mat-form-field>
       
      
@@ -84,36 +118,71 @@
         <mat-form-field appearance="outline" class="col-md-6">
             <mat-label> Model Name </mat-label>
           <input matInput type="text"  formControlName="model_name">
+          <mat-error *ngIf="f.general.controls['model_name'].invalid
+          && (f.general.controls['model_name'].dirty || f.general.controls['model_name'].touched) 
+          && f.general.controls['model_name'].errors.required">
+          Model Name is required.
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="col-md-6">
             <mat-label> Model Number </mat-label>
-          <input matInput type="text" formControlName="model_number">
+          <input matInput type="number" formControlName="model_number">
+          <mat-error *ngIf="f.general.controls['model_number'].invalid
+          && (f.general.controls['model_number'].dirty || f.general.controls['model_number'].touched) 
+          && f.general.controls['model_number'].errors.required">
+          Model Number is required.
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="col-md-6">
             <mat-label> Color</mat-label>
             <input matInput type="text" placeholder="color" formControlName="color">
+            <mat-error *ngIf="f.general.controls['color'].invalid
+            && (f.general.controls['color'].dirty || f.general.controls['color'].touched) 
+            && f.general.controls['color'].errors.required">
+             Color is required.
+            </mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="col-md-6">
             <mat-label> In box</mat-label>
           <input matInput type="text" formControlName="in_the_box">
+          <mat-error *ngIf="f.general.controls['in_the_box'].invalid
+            && (f.general.controls['in_the_box'].dirty || f.general.controls['in_the_box'].touched) 
+            && f.general.controls['in_the_box'].errors.required">
+             In box is required.
+            </mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="col-md-4">
             <mat-label> Sim Type </mat-label>
           <input matInput type="text" formControlName="sim_type">
+          <mat-error *ngIf="f.general.controls['sim_type'].invalid
+          && (f.general.controls['sim_type'].dirty || f.general.controls['sim_type'].touched) 
+          && f.general.controls['sim_type'].errors.required">
+           Sim Type is required.
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="col-md-4">
             <mat-label> Touch Screen </mat-label>
           <input matInput type="text" formControlName="touchScreen">
+          <!-- <mat-error *ngIf="f.general.controls['touchScreen'].invalid
+          && (f.general.controls['touchScreen'].dirty || f.general.controls['touchScreen'].touched) 
+          && f.general.controls['touchScreen'].errors.required">
+          Touch Screen is required.
+          </mat-error> -->
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="col-md-4">
             <mat-label> Quick charging </mat-label>
           <input matInput type="text"  formControlName="quick_charging">
+          <!-- <mat-error *ngIf="f.general.controls['quick_charging'].invalid
+          && (f.general.controls['quick_charging'].dirty || f.general.controls['quick_charging'].touched) 
+          && f.general.controls['quick_charging'].errors.required">
+            Quick charging is required.
+          </mat-error> -->
         </mat-form-field>
       </div>
     </mat-card-content>

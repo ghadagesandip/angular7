@@ -13,6 +13,9 @@ export class AddProductComponent implements OnInit {
   public brands = [];
   public categories = [];
   public addProduct: FormGroup;
+  public general:FormGroup
+
+  urlRegex = '(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?';
 
   constructor(
     private fb: FormBuilder,
@@ -29,13 +32,15 @@ export class AddProductComponent implements OnInit {
         this.categories = resp.data;
       }
     );
+    debugger;
   }
 
   private createForm() {
     this.addProduct  = this.fb.group({
       name : ['', [Validators.required]],
+      productDesc:['', [Validators.required]],
       images: this.fb.array([
-        this.fb.control('', [Validators.required]),
+        this.fb.control('', [Validators.pattern(this.urlRegex)]),
       ]),
       price: ['', [Validators.required]],
       discount: ['', [Validators.required]],
@@ -55,6 +60,10 @@ export class AddProductComponent implements OnInit {
         quick_charging: ['']
       })
     });
+  }
+
+  get f(){
+    return this.addProduct.controls
   }
 
   get images() {
@@ -94,7 +103,9 @@ export class AddProductComponent implements OnInit {
         }
       );
     } else {
-      return false;
+      // return false;
+      this.validateAllFormFields(this.addProduct); 
+
     }
   }
 
@@ -106,5 +117,14 @@ export class AddProductComponent implements OnInit {
     );
   }
 
-
+  validateAllFormFields(formGroup: FormGroup) {         
+  Object.keys(formGroup.controls).forEach(field => {  
+    const control = formGroup.get(field);            
+    if (control instanceof FormControl) {            
+      control.markAsTouched({ onlySelf: true });
+    } else if (control instanceof FormGroup) {       
+      this.validateAllFormFields(control);           
+    }
+  });
+}
 }

@@ -53,8 +53,8 @@ export class EditProductComponent implements OnInit {
     });
 
     this.adminService.getProduct(this.route.snapshot.params.id).subscribe(
-      (resp: any) => {
-
+      (resp: any) =>  {
+       console.log(resp);
         this.adminService.getBrands(resp.data.category_id).subscribe(
           (categories: any) => {
             this.brands = categories.data;
@@ -67,13 +67,20 @@ export class EditProductComponent implements OnInit {
           discount: resp.data.discount,
           category_id: resp.data.category_id,
           brand: resp.data.brand._id,
-          warrenty: resp.data.warranty,
-          highlights: resp.data.highlights,
+          warrenty: 1,
+          highlights: resp.data.highlight,
           general: {
-            model_name: 'Sandip'
+            model_name: resp.data.general.model_name,
+            model_number:resp.data.general.model_number,
+            color:resp.data.general.color,
+            in_the_box:resp.data.general.in_the_box,
+            sim_type:resp.data.general.sim_type,
+            touchScreen:resp.data.general.touchScreen,
+            quick_charging:resp.data.general.quick_charging
           },
         });
       }
+      
     );
   }
 

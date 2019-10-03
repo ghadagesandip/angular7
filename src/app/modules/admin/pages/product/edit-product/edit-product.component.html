@@ -46,6 +46,7 @@
         <input matInput type="number" placeholder="warrenty" formControlName="warrenty">
       </mat-form-field>
 
+
       <h3>highlights</h3> <b (click)="addOneMore()">Add one more</b>
       <mat-form-field formArrayName="highlights" 
          *ngFor="let highlight of highlights.controls; let i=index">
