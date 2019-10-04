@@ -13,7 +13,8 @@ export class EditProductComponent implements OnInit {
   brands = [];
   categories = [];
   editProduct: FormGroup;
-
+  imageList: any = [];
+  highlightList : any = [];
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -30,17 +31,13 @@ export class EditProductComponent implements OnInit {
 
     this.editProduct  = this.fb.group({
       name : ['', Validators.required],
-      images: this.fb.array([
-        this.fb.control(''),
-      ]),
+      images: this.fb.array([]),
       price: ['', Validators.required],
       discount: ['', Validators.required],
       brand: ['', Validators.required],
       category_id: ['', Validators.required],
       warrenty: ['', Validators.required],
-      highlights: this.fb.array([
-        this.fb.control(''),
-      ]),
+      highlights: this.fb.array([]),
       general: this.fb.group({
         model_name: ['', Validators.required],
         model_number: ['', Validators.required],
@@ -51,7 +48,7 @@ export class EditProductComponent implements OnInit {
         quick_charging: ['']
       })
     });
-
+    console.log(this.editProduct)
     this.adminService.getProduct(this.route.snapshot.params.id).subscribe(
       (resp: any) =>  {
        console.log(resp);
@@ -60,6 +57,14 @@ export class EditProductComponent implements OnInit {
             this.brands = categories.data;
           }
         );
+        resp.data.images.forEach(el => {
+          this.addOneMoreImg();
+        });
+
+        resp.data.highlight.forEach(el => {
+          this.addOneMoreHighlight();
+        });
+
         this.editProduct.patchValue({
           name: resp.data.name,
           images: resp.data.images,
@@ -79,19 +84,40 @@ export class EditProductComponent implements OnInit {
             quick_charging:resp.data.general.quick_charging
           },
         });
+
+        console.log('Edit Prodcut', this.editProduct)
       }
       
     );
+
   }
 
-
-  addOneMore() {
-    this.highlights.push(this.fb.control(''));
+  addImage() {
+    return this.fb.control('');
+  }
+ 
+  addOneMoreImg(): void {
+    this.imageList = this.editProduct.get('images') as FormArray;
+    this.imageList.push(this.addImage());
   }
 
-  addOneMoreImg() {
-    this.images.push(this.fb.control(''));
+  addHighlight() {
+    return this.fb.control('');
   }
+
+  addOneMoreHighlight() {
+    this.highlightList = this.editProduct.get('highlights') as FormArray;
+    this.highlightList.push(this.addHighlight());
+  }
+
+  // addOneMore() {
+  //   this.highlights.push(this.fb.control(''));
+  // }
+
+  // addOneMoreImg() {
+    
+  //   this.images.push(this.fb.control(''));
+  // }
 
 
   get images() {

@@ -16,6 +16,7 @@ export class AddProductComponent implements OnInit {
   public general:FormGroup
 
   urlRegex = '(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?';
+  // reg = '(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?';
 
   constructor(
     private fb: FormBuilder,
@@ -40,7 +41,7 @@ export class AddProductComponent implements OnInit {
       name : ['', [Validators.required]],
       productDesc:['', [Validators.required]],
       images: this.fb.array([
-        this.fb.control('', [Validators.pattern(this.urlRegex)]),
+        this.fb.control('', [Validators.required]),
       ]),
       price: ['', [Validators.required]],
       discount: ['', [Validators.required]],

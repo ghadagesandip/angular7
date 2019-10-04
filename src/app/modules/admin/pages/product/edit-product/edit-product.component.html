@@ -11,12 +11,12 @@
       <h4>Images</h4> 
       <b (click)="addOneMoreImg()">Add one more</b>
       <mat-form-field formArrayName="images" 
-         *ngFor="let image of images.controls; let i=index">
+         *ngFor="let image of images.controls; let i = index">
         <input
           matInput 
           type="text" 
-          [formControlName]="i">
-      </mat-form-field>
+          [formControlName]="i"> 
+      </mat-form-field> 
 
       <mat-form-field>
         <input matInput type="number" placeholder="price" formControlName="price">
@@ -47,7 +47,7 @@
       </mat-form-field>
 
 
-      <h3>highlights</h3> <b (click)="addOneMore()">Add one more</b>
+      <h3>highlights</h3> <b (click)="addOneMoreHighlight()">Add one more</b>
       <mat-form-field formArrayName="highlights" 
          *ngFor="let highlight of highlights.controls; let i=index">
         <input
