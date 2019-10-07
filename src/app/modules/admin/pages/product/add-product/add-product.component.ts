@@ -13,7 +13,7 @@ export class AddProductComponent implements OnInit {
   public brands = [];
   public categories = [];
   public addProduct: FormGroup;
-  public general:FormGroup
+  public general: FormGroup
 
   urlRegex = '(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?';
   // reg = '(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?';
@@ -33,13 +33,12 @@ export class AddProductComponent implements OnInit {
         this.categories = resp.data;
       }
     );
-    debugger;
   }
 
   private createForm() {
-    this.addProduct  = this.fb.group({
-      name : ['', [Validators.required]],
-      productDesc:['', [Validators.required]],
+    this.addProduct = this.fb.group({
+      name: ['', [Validators.required]],
+      productDesc: ['', [Validators.required]],
       images: this.fb.array([
         this.fb.control('', [Validators.required]),
       ]),
@@ -61,10 +60,23 @@ export class AddProductComponent implements OnInit {
         quick_charging: ['']
       })
     });
+
+    this.images.valueChanges.subscribe(checked => {
+      if (checked) {
+        this.images.setValidators([Validators.required]);
+      } else {
+
+      }
+    });
+
   }
 
-  get f(){
-    return this.addProduct.controls
+
+
+
+
+  get f() {
+    return this.addProduct.controls;
   }
 
   get images() {
@@ -105,7 +117,7 @@ export class AddProductComponent implements OnInit {
       );
     } else {
       // return false;
-      this.validateAllFormFields(this.addProduct); 
+      this.validateAllFormFields(this.addProduct);
 
     }
   }
@@ -118,14 +130,14 @@ export class AddProductComponent implements OnInit {
     );
   }
 
-  validateAllFormFields(formGroup: FormGroup) {         
-  Object.keys(formGroup.controls).forEach(field => {  
-    const control = formGroup.get(field);            
-    if (control instanceof FormControl) {            
-      control.markAsTouched({ onlySelf: true });
-    } else if (control instanceof FormGroup) {       
-      this.validateAllFormFields(control);           
-    }
-  });
-}
+  validateAllFormFields(formGroup: FormGroup) {
+    Object.keys(formGroup.controls).forEach(field => {
+      const control = formGroup.get(field);
+      if (control instanceof FormControl) {
+        control.markAsTouched({ onlySelf: true });
+      } else if (control instanceof FormGroup) {
+        this.validateAllFormFields(control);
+      }
+    });
+  }
 }

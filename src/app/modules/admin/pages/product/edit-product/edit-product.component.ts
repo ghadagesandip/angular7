@@ -49,6 +49,15 @@ export class EditProductComponent implements OnInit {
         quick_charging: ['']
       })
     });
+
+    this.images.valueChanges.subscribe(checked => {
+      if (checked) {
+        this.images.setValidators([Validators.required]);
+      } else {
+
+      }
+    });
+
     console.log(this.editProduct)
     this.adminService.getProduct(this.route.snapshot.params.id).subscribe(
       (resp: any) => {
@@ -88,6 +97,10 @@ export class EditProductComponent implements OnInit {
       }
 
     );
+  }
+
+  get f() {
+    return this.editProduct.controls;
   }
 
   addImage() {

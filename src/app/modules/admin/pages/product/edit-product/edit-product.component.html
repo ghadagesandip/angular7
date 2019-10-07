@@ -6,75 +6,127 @@
     <mat-card-content>
       <mat-form-field>
         <input matInput type="text" placeholder="Name" formControlName="name">
+        <mat-error *ngIf="editProduct.controls['name'].invalid
+        && (editProduct.controls['name'].dirty || editProduct.controls['name'].touched) 
+        && editProduct.controls['name'].errors.required">
+          Name is required.
+        </mat-error>
       </mat-form-field>
-  
-      <h4>Images</h4> 
+
+      <h4>Images</h4>
       <b (click)="addOneMoreImg()">Add one more</b>
-      <mat-form-field formArrayName="images" 
-         *ngFor="let image of images.controls; let i = index">
-        <input
-          matInput 
-          type="text" 
-          [formControlName]="i"> 
-      </mat-form-field> 
+      <mat-form-field formArrayName="images" *ngFor="let image of images.controls; let i = index">
+        <input matInput type="text" [formControlName]="i" required>
+        <mat-error *ngIf="image.invalid ||
+          (image.dirty || image.touched)">
+          Image URL is required.
+        </mat-error>
+      </mat-form-field>
 
       <mat-form-field>
         <input matInput type="number" placeholder="price" formControlName="price">
-      </mat-form-field>
-  
-      <mat-form-field>
-        <input matInput type="number" placeholder="discount" formControlName="discount">
+        <mat-error *ngIf="editProduct.controls['price'].invalid
+        && (editProduct.controls['price'].dirty || editProduct.controls['price'].touched) 
+        && editProduct.controls['price'].errors.required">
+          Price is required.
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field>
-        <mat-select (selectionChange)="loadBrands($event.value)" formControlName="category_id" placeholder="Choose Category">
-            <mat-option *ngFor="let category of categories" [value]="category._id"  >
-              {{category.name}}
-            </mat-option>
-          </mat-select>
+        <input matInput type="number" placeholder="discount" formControlName="discount">
+        <mat-error *ngIf="editProduct.controls['discount'].invalid
+        && (editProduct.controls['discount'].dirty || editProduct.controls['discount'].touched) 
+        && editProduct.controls['discount'].errors.required">
+          Discount is required.
+        </mat-error>
       </mat-form-field>
-      
+
+      <mat-form-field>
+        <mat-select (selectionChange)="loadBrands($event.value)" formControlName="category_id"
+          placeholder="Choose Category">
+          <mat-option *ngFor="let category of categories" [value]="category._id">
+            {{category.name}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="editProduct.controls['category_id'].invalid
+          && (editProduct.controls['category_id'].dirty || editProduct.controls['category_id'].touched) 
+          && editProduct.controls['category_id'].errors?.required">
+          Category is required.
+        </mat-error>
+      </mat-form-field>
+
       <mat-form-field>
         <mat-select formControlName="brand" placeholder="Choose Brand">
-            <mat-option *ngFor="let brand of brands" [value]="brand._id"  >
-              {{brand.name}}
-            </mat-option>
-          </mat-select>
+          <mat-option *ngFor="let brand of brands" [value]="brand._id">
+            {{brand.name}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="editProduct.controls['brand'].invalid
+          && (editProduct.controls['brand'].dirty || editProduct.controls['brand'].touched) 
+          && editProduct.controls['category_id'].errors?.required">
+          Brand is required.
+        </mat-error>
       </mat-form-field>
-      
+
       <mat-form-field>
         <input matInput type="number" placeholder="warrenty" formControlName="warrenty">
+        <mat-error *ngIf="editProduct.controls['warrenty'].invalid
+        && (editProduct.controls['warrenty'].dirty || editProduct.controls['warrenty'].touched) 
+        && editProduct.controls['warrenty'].errors.required">
+          Warranty is required.
+        </mat-error>
       </mat-form-field>
 
 
       <h3>highlights</h3> <b (click)="addOneMoreHighlight()">Add one more</b>
-      <mat-form-field formArrayName="highlights" 
-         *ngFor="let highlight of highlights.controls; let i=index">
-        <input
-          matInput 
-          type="text" 
-          [formControlName]="i">
+      <mat-form-field formArrayName="highlights" *ngFor="let highlight of highlights.controls; let i=index">
+        <input matInput type="text" [formControlName]="i">
       </mat-form-field>
 
       <div formGroupName="general">
         <mat-form-field>
           <input matInput type="text" placeholder="model name" formControlName="model_name">
+          <mat-error *ngIf="f.general.controls['model_name'].invalid
+          && (f.general.controls['model_name'].dirty || f.general.controls['model_name'].touched) 
+          && f.general.controls['model_name'].errors.required">
+            Model Name is required.
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field>
           <input matInput type="text" placeholder="model number" formControlName="model_number">
+          <mat-error *ngIf="f.general.controls['model_number'].invalid
+          && (f.general.controls['model_number'].dirty || f.general.controls['model_number'].touched) 
+          && f.general.controls['model_number'].errors.required">
+            Model Number is required.
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field>
           <input matInput type="text" placeholder="color" formControlName="color">
+          <mat-error *ngIf="f.general.controls['color'].invalid
+            && (f.general.controls['color'].dirty || f.general.controls['color'].touched) 
+            && f.general.controls['color'].errors.required">
+            Color is required.
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field>
           <input matInput type="text" placeholder="in the box" formControlName="in_the_box">
+          <mat-error *ngIf="f.general.controls['in_the_box'].invalid
+          && (f.general.controls['in_the_box'].dirty || f.general.controls['in_the_box'].touched) 
+          && f.general.controls['in_the_box'].errors.required">
+            In box is required.
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field>
           <input matInput type="text" placeholder="sim type" formControlName="sim_type">
+          <mat-error *ngIf="f.general.controls['sim_type'].invalid
+          && (f.general.controls['sim_type'].dirty || f.general.controls['sim_type'].touched) 
+          && f.general.controls['sim_type'].errors.required">
+            Sim Type is required.
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field>
@@ -89,13 +141,8 @@
     </mat-card-content>
 
     <mat-card-actions>
-        <button type="submit" 
-          [disabled]="!editProduct.valid"
-          mat-raised-button 
-          color="primary" 
-          mat-button>Submit</button>
-        <button mat-button>Cancel</button>
+      <button type="submit" [disabled]="!editProduct.valid" mat-raised-button color="primary" mat-button>Submit</button>
+      <button mat-button>Cancel</button>
     </mat-card-actions>
   </mat-card>
 </form>
-
