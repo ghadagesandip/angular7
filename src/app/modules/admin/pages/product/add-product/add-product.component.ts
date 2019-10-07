@@ -60,15 +60,6 @@ export class AddProductComponent implements OnInit {
         quick_charging: ['']
       })
     });
-
-    this.images.valueChanges.subscribe(checked => {
-      if (checked) {
-        this.images.setValidators([Validators.required]);
-      } else {
-
-      }
-    });
-
   }
 
 
@@ -131,7 +122,9 @@ export class AddProductComponent implements OnInit {
   }
 
   validateAllFormFields(formGroup: FormGroup) {
+    debugger;
     Object.keys(formGroup.controls).forEach(field => {
+      console.log(field);
       const control = formGroup.get(field);
       if (control instanceof FormControl) {
         control.markAsTouched({ onlySelf: true });
