@@ -33,6 +33,7 @@ export class EditProductComponent implements OnInit {
     this.editProduct = this.fb.group({
       name: ['', Validators.required],
       images: this.fb.array([]),
+      productDesc: ['', [Validators.required]],
       price: ['', Validators.required],
       discount: ['', Validators.required],
       brand: ['', Validators.required],
@@ -50,7 +51,6 @@ export class EditProductComponent implements OnInit {
       })
     });
 
-    console.log(this.editProduct)
     this.adminService.getProduct(this.route.snapshot.params.id).subscribe(
       (resp: any) => {
         console.log(resp);
