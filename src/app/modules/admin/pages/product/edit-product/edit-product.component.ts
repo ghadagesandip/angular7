@@ -13,7 +13,8 @@ export class EditProductComponent implements OnInit {
   brands = [];
   categories = [];
   editProduct: FormGroup;
-
+  imageList: any = [];
+  highlightList: any = [];
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -22,25 +23,22 @@ export class EditProductComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
     this.adminService.getCateogies().subscribe(
       (resp: any) => {
         this.categories = resp.data;
       }
     );
 
-    this.editProduct  = this.fb.group({
-      name : ['', Validators.required],
-      images: this.fb.array([
-        this.fb.control(''),
-      ]),
+    this.editProduct = this.fb.group({
+      name: ['', Validators.required],
+      images: this.fb.array([]),
       price: ['', Validators.required],
       discount: ['', Validators.required],
       brand: ['', Validators.required],
       category_id: ['', Validators.required],
       warrenty: ['', Validators.required],
-      highlights: this.fb.array([
-        this.fb.control(''),
-      ]),
+      highlights: this.fb.array([]),
       general: this.fb.group({
         model_name: ['', Validators.required],
         model_number: ['', Validators.required],
@@ -52,14 +50,23 @@ export class EditProductComponent implements OnInit {
       })
     });
 
+    console.log(this.editProduct)
     this.adminService.getProduct(this.route.snapshot.params.id).subscribe(
       (resp: any) => {
-
+        console.log(resp);
         this.adminService.getBrands(resp.data.category_id).subscribe(
           (categories: any) => {
             this.brands = categories.data;
           }
         );
+        resp.data.images.forEach(el => {
+          this.addOneMoreImg();
+        });
+
+        resp.data.highlight.forEach(el => {
+          this.addOneMoreHighlight();
+        });
+
         this.editProduct.patchValue({
           name: resp.data.name,
           images: resp.data.images,
@@ -67,24 +74,53 @@ export class EditProductComponent implements OnInit {
           discount: resp.data.discount,
           category_id: resp.data.category_id,
           brand: resp.data.brand._id,
-          warrenty: resp.data.warranty,
-          highlights: resp.data.highlights,
+          warrenty: 1,
+          highlights: resp.data.highlight,
           general: {
-            model_name: 'Sandip'
+            model_name: resp.data.general.model_name,
+            model_number: resp.data.general.model_number,
+            color: resp.data.general.color,
+            in_the_box: resp.data.general.in_the_box,
+            sim_type: resp.data.general.sim_type,
+            touchScreen: resp.data.general.touchScreen,
+            quick_charging: resp.data.general.quick_charging
           },
         });
       }
+
     );
   }
 
-
-  addOneMore() {
-    this.highlights.push(this.fb.control(''));
+  get f() {
+    return this.editProduct.controls;
   }
 
-  addOneMoreImg() {
-    this.images.push(this.fb.control(''));
+  addImage() {
+    return this.fb.control('');
   }
+
+  addOneMoreImg(): void {
+    this.imageList = this.editProduct.get('images') as FormArray;
+    this.imageList.push(this.addImage());
+  }
+
+  addHighlight() {
+    return this.fb.control('');
+  }
+
+  addOneMoreHighlight() {
+    this.highlightList = this.editProduct.get('highlights') as FormArray;
+    this.highlightList.push(this.addHighlight());
+  }
+
+  // addOneMore() {
+  //   this.highlights.push(this.fb.control(''));
+  // }
+
+  // addOneMoreImg() {
+
+  //   this.images.push(this.fb.control(''));
+  // }
 
 
   get images() {
@@ -94,6 +130,7 @@ export class EditProductComponent implements OnInit {
   get highlights() {
     return this.editProduct.get('highlights') as FormArray;
   }
+
 
   onSubmit() {
     if (this.editProduct.valid) {
