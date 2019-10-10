@@ -14,13 +14,14 @@
       </mat-form-field>
 
       <h4>Images</h4>
-      <b (click)="addOneMoreImg()">Add one more</b>
       <mat-form-field appearance="outline" formArrayName="images" *ngFor="let image of images.controls; let i = index">
         <input matInput type="text" [formControlName]="i" required>
         <mat-error *ngIf="image.invalid ||
           (image.dirty || image.touched)">
           Image URL is required.
         </mat-error>
+        <mat-icon *ngIf="i == 0" (click)="addOneMoreImg()" matSuffix>add</mat-icon>
+        <mat-icon *ngIf="i > 0" matSuffix (click)="removeImg(i)">delete</mat-icon>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
@@ -88,12 +89,12 @@
           Brand is required.
         </mat-error>
       </mat-form-field>
-
      
-
-      <h3>highlights</h3> <b (click)="addOneMoreHighlight()">Add one more</b>
+      <h3>highlights</h3> 
       <mat-form-field appearance="outline" formArrayName="highlights" *ngFor="let highlight of highlights.controls; let i=index">
         <input matInput type="text" [formControlName]="i">
+        <mat-icon *ngIf="i == 0" (click)="addOneMoreHighlight()" matSuffix>add</mat-icon>
+        <mat-icon *ngIf="i > 0" matSuffix (click)="removeHighlight(i)">delete</mat-icon>
       </mat-form-field>
 
       <div formGroupName="general">

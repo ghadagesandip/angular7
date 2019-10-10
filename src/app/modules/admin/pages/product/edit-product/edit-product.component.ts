@@ -99,6 +99,10 @@ export class EditProductComponent implements OnInit {
     return this.fb.control('');
   }
 
+  removeImg(i) {
+    this.images.controls.splice(i, 1);
+  }
+
   addOneMoreImg(): void {
     this.imageList = this.editProduct.get('images') as FormArray;
     this.imageList.push(this.addImage());
@@ -113,6 +117,10 @@ export class EditProductComponent implements OnInit {
     this.highlightList.push(this.addHighlight());
   }
 
+
+  removeHighlight(i) {
+    this.highlights.controls.splice(i, 1);
+  }
   // addOneMore() {
   //   this.highlights.push(this.fb.control(''));
   // }
