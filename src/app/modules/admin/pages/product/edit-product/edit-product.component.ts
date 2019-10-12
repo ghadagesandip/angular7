@@ -33,7 +33,7 @@ export class EditProductComponent implements OnInit {
     this.editProduct = this.fb.group({
       name: ['', Validators.required],
       images: this.fb.array([]),
-      productDesc: ['', [Validators.required]],
+      description: ['', [Validators.required]],
       price: ['', Validators.required],
       discount: ['', Validators.required],
       brand: ['', Validators.required],
@@ -69,6 +69,7 @@ export class EditProductComponent implements OnInit {
 
         this.editProduct.patchValue({
           name: resp.data.name,
+          description: resp.data.description,
           images: resp.data.images,
           price: resp.data.price,
           discount: resp.data.discount,
@@ -121,15 +122,6 @@ export class EditProductComponent implements OnInit {
   removeHighlight(i) {
     this.highlights.controls.splice(i, 1);
   }
-  // addOneMore() {
-  //   this.highlights.push(this.fb.control(''));
-  // }
-
-  // addOneMoreImg() {
-
-  //   this.images.push(this.fb.control(''));
-  // }
-
 
   get images() {
     return this.editProduct.get('images') as FormArray;
@@ -139,10 +131,9 @@ export class EditProductComponent implements OnInit {
     return this.editProduct.get('highlights') as FormArray;
   }
 
-
   onSubmit() {
     if (this.editProduct.valid) {
-      this.adminService.addProduct(this.editProduct.value).subscribe(
+      this.adminService.editProduct(this.route.snapshot.params.id, this.editProduct.value).subscribe(
         (resp: any) => {
           this.router.navigate(['/admin/products']);
         }

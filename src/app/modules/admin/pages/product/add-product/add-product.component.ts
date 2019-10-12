@@ -13,7 +13,7 @@ export class AddProductComponent implements OnInit {
   public brands = [];
   public categories = [];
   public addProduct: FormGroup;
-  public general: FormGroup
+  public general: FormGroup;
 
   urlRegex = '(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?';
   // reg = '(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?';
@@ -38,7 +38,7 @@ export class AddProductComponent implements OnInit {
   private createForm() {
     this.addProduct = this.fb.group({
       name: ['', [Validators.required]],
-      productDesc: ['', [Validators.required]],
+      description: ['', [Validators.required]],
       images: this.fb.array([
         this.fb.control('', [Validators.required]),
       ]),
@@ -122,7 +122,6 @@ export class AddProductComponent implements OnInit {
   }
 
   validateAllFormFields(formGroup: FormGroup) {
-    debugger;
     Object.keys(formGroup.controls).forEach(field => {
       console.log(field);
       const control = formGroup.get(field);

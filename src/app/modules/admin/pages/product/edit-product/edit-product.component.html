@@ -26,10 +26,10 @@
 
       <mat-form-field appearance="outline">
         <mat-label> Product description </mat-label>
-        <textarea matInput rows="3" formControlName="productDesc"></textarea>
-        <mat-error *ngIf="editProduct.controls['productDesc'].invalid
-        && (editProduct.controls['productDesc'].dirty || editProduct.controls['productDesc'].touched) 
-        && editProduct.controls['productDesc'].errors.required">
+        <textarea matInput rows="3" formControlName="description"></textarea>
+        <mat-error *ngIf="editProduct.controls['description'].invalid
+        && (editProduct.controls['description'].dirty || editProduct.controls['description'].touched) 
+        && editProduct.controls['description'].errors.required">
           Product Description is required.
         </mat-error>
       </mat-form-field>

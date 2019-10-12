@@ -32,7 +32,7 @@ export class AdminService {
     }
 
     public editProduct(id, data) {
-
+        return this.http.put(`${environment.apiUrl}products/${id}`, data);
     }
 
     public getCateogies() {

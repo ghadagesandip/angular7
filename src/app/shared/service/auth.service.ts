@@ -25,7 +25,6 @@ export class AuthService {
     const user = localStorage.getItem('user');
     if (user) {
         const userData = JSON.parse(user);
-        console.log('userData', userData.userRole);
         return userData.userRole === 'admin' ? true : false;
     }
   }
